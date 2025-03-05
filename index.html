@@ -64,8 +64,8 @@
                     <p>Estimated Fare: <span id="fare-estimate">₹--</span></p>
                 </div>
                 <input type="datetime-local" id="schedule-time" class="input-field" style="display: none;">
-                <button id="book-btn" class="action-btn primary-btn" disabled>Request WoGo</button>
-                <button id="schedule-btn" class="action-btn secondary-btn">Schedule for Later</button>
+                <button id="book-btn" class="action-btn primary-btn" disabled aria-label="Request a WoGo ride">Request WoGo</button>
+                <button id="schedule-btn" class="action-btn secondary-btn" aria-label="Schedule a ride for later">Schedule for Later</button>
             </aside>
             <section class="map-container">
                 <div id="map"></div>
@@ -83,7 +83,7 @@
                     <div class="status-toggle">
                         <span id="driver-status-dash"></span>
                         <label class="switch">
-                            <input type="checkbox" id="toggle-status-checkbox">
+                            <input type="checkbox" id="toggle-status-checkbox" aria-label="Toggle driver availability">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -136,9 +136,9 @@
         </div>
 
         <!-- Modals -->
-        <div class="modal" id="booking-modal">
+        <div class="modal" id="booking-modal" role="dialog" aria-labelledby="booking-modal-title" aria-hidden="true">
             <div class="modal-content">
-                <h2>Ride Confirmed</h2>
+                <h2 id="booking-modal-title">Ride Confirmed</h2>
                 <p id="modal-ride-type" class="modal-text"></p>
                 <p id="modal-route" class="modal-text"></p>
                 <p id="modal-otp" class="modal-text" style="display: none;">Your OTP: <span id="otp-value"></span> (Share this with your driver)</p>
@@ -155,43 +155,43 @@
                     <h3>Chat with Driver</h3>
                     <div id="chat-messages"></div>
                     <div class="chat-input-group">
-                        <input type="text" id="chat-input" placeholder="Message driver...">
-                        <button id="send-chat" class="action-btn">Send</button>
+                        <input type="text" id="chat-input" placeholder="Message driver..." aria-label="Message to driver">
+                        <button id="send-chat" class="action-btn" aria-label="Send message to driver">Send</button>
                     </div>
                 </div>
                 <div class="payment-section">
                     <h3>Payment</h3>
-                    <select id="payment-method" class="select-input">
+                    <select id="payment-method" class="select-input" aria-label="Select payment method">
                         <option value="cod">COD (Cash on Delivery)</option>
                         <option value="online-to-driver">Pay Online to Cab Driver</option>
                     </select>
-                    <button id="pay-now" class="action-btn primary-btn">Confirm Payment</button>
+                    <button id="pay-now" class="action-btn primary-btn" aria-label="Confirm payment">Confirm Payment</button>
                 </div>
                 <div class="rating-section" style="display: none;">
                     <h3>Rate Your Driver</h3>
-                    <div class="stars" id="rating-stars">
-                        <span data-value="1">★</span>
-                        <span data-value="2">★</span>
-                        <span data-value="3">★</span>
-                        <span data-value="4">★</span>
-                        <span data-value="5">★</span>
+                    <div class="stars" id="rating-stars" role="radiogroup" aria-label="Rate driver from 1 to 5 stars">
+                        <span data-value="1" role="radio" aria-label="1 star">★</span>
+                        <span data-value="2" role="radio" aria-label="2 stars">★</span>
+                        <span data-value="3" role="radio" aria-label="3 stars">★</span>
+                        <span data-value="4" role="radio" aria-label="4 stars">★</span>
+                        <span data-value="5" role="radio" aria-label="5 stars">★</span>
                     </div>
-                    <button id="submit-rating" class="action-btn">Submit</button>
+                    <button id="submit-rating" class="action-btn" aria-label="Submit driver rating">Submit</button>
                 </div>
                 <div class="modal-buttons">
-                    <button id="cancel-btn" class="action-btn secondary-btn">Cancel Ride</button>
-                    <button id="close-modal" class="action-btn secondary-btn">Close</button>
+                    <button id="cancel-btn" class="action-btn secondary-btn" aria-label="Cancel ride">Cancel Ride</button>
+                    <button id="close-modal" class="action-btn secondary-btn" aria-label="Close modal">Close</button>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="profile-modal">
+        <div class="modal" id="profile-modal" role="dialog" aria-labelledby="profile-modal-title" aria-hidden="true">
             <div class="modal-content">
-                <h2>Your Account</h2>
+                <h2 id="profile-modal-title">Your Account</h2>
                 <div class="profile-details">
                     <div class="profile-pic">
-                        <img src="https://via.placeholder.com/80" alt="Profile" id="profile-pic">
-                        <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
+                        <img src="https://via.placeholder.com/80" alt="Profile picture" id="profile-pic">
+                        <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;" aria-label="Upload profile picture">
                     </div>
                     <div class="account-info">
                         <p><strong>Name:</strong> <span id="profile-name" contenteditable="false"></span></p>
@@ -204,44 +204,44 @@
                     <p>Avg Rating: <span id="avg-rating">--</span></p>
                 </div>
                 <div class="promo-section">
-                    <input type="text" id="promo-code" placeholder="Enter Promo Code" class="input-field">
-                    <button id="apply-promo" class="action-btn">Apply</button>
+                    <input type="text" id="promo-code" placeholder="Enter Promo Code" class="input-field" aria-label="Enter promo code">
+                    <button id="apply-promo" class="action-btn" aria-label="Apply promo code">Apply</button>
                 </div>
-                <button id="edit-profile-btn" class="action-btn">Edit</button>
-                <button id="save-profile-btn" class="action-btn" style="display: none;">Save</button>
-                <button id="logout-btn" class="action-btn secondary-btn">Sign Out</button>
+                <button id="edit-profile-btn" class="action-btn" aria-label="Edit profile">Edit</button>
+                <button id="save-profile-btn" class="action-btn" style="display: none;" aria-label="Save profile changes">Save</button>
+                <button id="logout-btn" class="action-btn secondary-btn" aria-label="Sign out">Sign Out</button>
                 <div class="ride-history">
                     <h3>Your Trips (<span id="history-count">0</span>)</h3>
                     <ul id="ride-history-list"></ul>
                     <p id="no-history" style="display: none;">No trips yet.</p>
                 </div>
-                <button id="close-profile" class="action-btn secondary-btn">Close</button>
+                <button id="close-profile" class="action-btn secondary-btn" aria-label="Close profile modal">Close</button>
             </div>
         </div>
 
-        <div class="modal" id="driver-registration-modal">
+        <div class="modal" id="driver-registration-modal" role="dialog" aria-labelledby="driver-registration-title" aria-hidden="true">
             <div class="modal-content">
-                <h2>Become a Driver</h2>
+                <h2 id="driver-registration-title">Become a Driver</h2>
                 <div class="driver-form" id="driver-registration-form">
-                    <input type="text" id="driver-name" class="input-field" placeholder="Full Name" required>
-                    <input type="email" id="driver-email" class="input-field" placeholder="Email" required>
-                    <input type="tel" id="driver-phone" class="input-field" placeholder="Phone Number" required>
-                    <input type="text" id="driver-vehicle" class="input-field" placeholder="Vehicle Type (e.g., Sedan)" required>
-                    <input type="text" id="driver-license" class="input-field" placeholder="License Number" required>
+                    <input type="text" id="driver-name" class="input-field" placeholder="Full Name" required aria-label="Full name">
+                    <input type="email" id="driver-email" class="input-field" placeholder="Email" required aria-label="Email">
+                    <input type="tel" id="driver-phone" class="input-field" placeholder="Phone Number" required aria-label="Phone number">
+                    <input type="text" id="driver-vehicle" class="input-field" placeholder="Vehicle Type (e.g., Sedan)" required aria-label="Vehicle type">
+                    <input type="text" id="driver-license" class="input-field" placeholder="License Number" required aria-label="License number">
                     <div class="input-group">
                         <span class="dot pickup"></span>
-                        <input type="text" id="driver-location" class="input-field" placeholder="Current Location" required>
+                        <input type="text" id="driver-location" class="input-field" placeholder="Current Location" required aria-label="Current location">
                         <ul class="suggestions" id="driver-location-suggestions"></ul>
                     </div>
-                    <button id="submit-driver" class="action-btn primary-btn">Register as Driver</button>
+                    <button id="submit-driver" class="action-btn primary-btn" aria-label="Register as driver">Register as Driver</button>
                 </div>
-                <button id="close-driver-registration" class="action-btn secondary-btn">Close</button>
+                <button id="close-driver-registration" class="action-btn secondary-btn" aria-label="Close driver registration modal">Close</button>
             </div>
         </div>
 
-        <div class="modal" id="driver-details-modal" style="display: none;">
+        <div class="modal" id="driver-details-modal" style="display: none;" role="dialog" aria-labelledby="driver-details-title" aria-hidden="true">
             <div class="modal-content driver-details-modal-content">
-                <h2>Driver Profile</h2>
+                <h2 id="driver-details-title">Driver Profile</h2>
                 <div class="driver-details">
                     <div class="detail-item">
                         <strong>Driver ID:</strong> <span id="driver-id"></span>
@@ -265,7 +265,7 @@
                         <strong>Location:</strong> <span id="driver-dash-location"></span>
                     </div>
                 </div>
-                <button id="close-driver-details" class="action-btn secondary-btn">Close</button>
+                <button id="close-driver-details" class="action-btn secondary-btn" aria-label="Close driver details modal">Close</button>
             </div>
         </div>
     </div>
