@@ -101,6 +101,45 @@ body.dark .nav-btn {
     cursor: pointer;
 }
 
+/* Voice Button */
+.voice-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.voice-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Animated Driver Marker */
+.animated-driver {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.driver-marker {
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+/* Modal Animation */
+.modal-appear {
+    animation: slideInModal 0.5s ease;
+}
+
+@keyframes slideInModal {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 body.dark .hamburger {
     color: var(--text-dark);
 }
@@ -280,18 +319,18 @@ body.dark .ride-type {
     border-color: #333333;
 }
 
+body.dark .ride-type.active {
+    border-color: var(--text-dark); /* Better contrast in dark mode */
+}
+
 .ride-type:hover {
     border-color: #333333;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     background: #F5F5F5;
 }
 
-body.dark .ride-type.active {
-    border-color: #E0E0E0;
-}
-
 body.dark .ride-type:hover {
-    border-color: #E0E0E0;
+    border-color: var(--text-dark);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
     background: #444444;
 }
@@ -534,6 +573,7 @@ body.dark #chat-messages p {
 .stars span {
     color: #E0E0E0;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .stars span.active {
@@ -715,16 +755,6 @@ body.dark .dashboard-main {
     margin-bottom: 2rem;
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-light);
-}
-
-body.dark h1 {
-    color: var(--text-dark);
-}
-
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -879,182 +909,6 @@ body.dark .booking-panel::-webkit-scrollbar-thumb:hover, body.dark #chat-message
 #profile-modal .modal-content {
     padding: 2rem;
     width: 90%;
-    max-width: 600px; /* Slightly wider for better layout */
-    background: var(--light-bg);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    max-height: 85vh;
-    overflow-y: auto;
-}
-
-body.dark #profile-modal .modal-content {
-    background: var(--dark-bg);
-}
-
-.profile-details {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: #F8F8F8;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-body.dark .profile-details {
-    background: #2A2A2A;
-}
-
-.profile-pic {
-    flex-shrink: 0;
-}
-
-.profile-pic img {
-    width: 100px; /* Larger for better visibility */
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid var(--primary-color);
-    object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.profile-pic input[type="file"] {
-    margin-top: 0.5rem;
-    width: 100%;
-}
-
-.account-info {
-    flex: 1;
-}
-
-.account-info p {
-    margin: 0.75rem 0;
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.account-info p strong {
-    font-weight: 600;
-    color: var(--text-light);
-}
-
-body.dark .account-info p strong {
-    color: var(--text-dark);
-}
-
-.account-info p span {
-    color: var(--text-light);
-    padding: 0.5rem;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-}
-
-body.dark .account-info p span {
-    color: var(--text-dark);
-}
-
-.account-info p span[contenteditable="true"] {
-    background: #E0E0E0;
-    outline: none;
-    padding: 0.5rem 1rem;
-    width: 70%;
-    text-align: right;
-}
-
-body.dark .account-info p span[contenteditable="true"] {
-    background: #444444;
-}
-
-.stats {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: #F8F8F8;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-body.dark .stats {
-    background: #2A2A2A;
-}
-
-.stats p {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-.stats p span {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.promo-section {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.promo-section input {
-    flex: 1;
-}
-
-.ride-history {
-    margin-bottom: 2rem;
-}
-
-.ride-history h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-}
-
-.ride-history ul {
-    list-style: none;
-    max-height: 200px;
-    overflow-y: auto;
-    padding: 1rem;
-    background: #F8F8F8;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-body.dark .ride-history ul {
-    background: #2A2A2A;
-}
-
-.ride-history li {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #E0E0E0;
-    font-size: 1rem;
-}
-
-body.dark .ride-history li {
-    border-bottom: 1px solid #555555;
-}
-
-.ride-history li:last-child {
-    border-bottom: none;
-}
-
-.ride-history p#no-history {
-    text-align: center;
-    color: #888888;
-    font-style: italic;
-}
-
-/* Button Group for Profile Actions */
-#profile-modal .action-btn {
-    margin: 0.5rem 0; /* Space between stacked buttons */
-}
-
-/* Profile Modal Specific Styles */
-#profile-modal .modal-content {
-    padding: 2rem;
-    width: 90%;
     max-width: 600px;
     background: var(--light-bg);
     border-radius: 16px;
@@ -1102,7 +956,7 @@ body.dark .profile-details {
 
 .account-info {
     flex: 1;
-    width: 100%; /* Ensure it takes full available width */
+    width: 100%;
 }
 
 .account-info p {
@@ -1111,13 +965,13 @@ body.dark .profile-details {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem; /* Add gap for better spacing */
+    gap: 1rem;
 }
 
 .account-info p strong {
     font-weight: 600;
     color: var(--text-light);
-    flex-shrink: 0; /* Prevent label from shrinking */
+    flex-shrink: 0;
 }
 
 body.dark .account-info p strong {
@@ -1129,10 +983,10 @@ body.dark .account-info p strong {
     padding: 0.5rem;
     border-radius: 8px;
     transition: background 0.3s ease;
-    flex: 1; /* Allow span to grow and take available space */
-    overflow-x: hidden; /* Prevent horizontal overflow */
-    text-overflow: ellipsis; /* Add ellipsis if text is too long */
-    white-space: nowrap; /* Keep text on one line by default */
+    flex: 1;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 body.dark .account-info p span {
@@ -1142,14 +996,14 @@ body.dark .account-info p span {
 .account-info p span[contenteditable="true"] {
     background: #E0E0E0;
     outline: none;
-    padding: 0.75rem 1rem; /* More padding for comfort */
-    width: 100%; /* Full width for editing */
-    min-width: 0; /* Prevent excessive shrinking */
-    max-width: 100%; /* Prevent overflow */
-    white-space: normal; /* Allow wrapping when editing */
-    word-wrap: break-word; /* Break long words */
-    overflow-x: auto; /* Allow horizontal scroll only if needed */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+    padding: 0.75rem 1rem;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 body.dark .account-info p span[contenteditable="true"] {
@@ -1190,13 +1044,13 @@ body.dark .stats {
 
 .promo-section input {
     flex: 1;
-    min-width: 200px; /* Minimum width to prevent shrinking too much */
-    padding: 1rem; /* Consistent padding */
+    min-width: 200px;
+    padding: 1rem;
     font-size: 1rem;
 }
 
 .promo-section .action-btn {
-    padding: 1rem 2rem; /* Wider button for better click area */
+    padding: 1rem 2rem;
 }
 
 .ride-history {
@@ -1226,7 +1080,7 @@ body.dark .ride-history ul {
     padding: 0.75rem 0;
     border-bottom: 1px solid #E0E0E0;
     font-size: 1rem;
-    word-wrap: break-word; /* Ensure long text wraps */
+    word-wrap: break-word;
 }
 
 body.dark .ride-history li {
@@ -1246,101 +1100,7 @@ body.dark .ride-history li {
 /* Button Group for Profile Actions */
 #profile-modal .action-btn {
     margin: 0.5rem 0;
-    width: 100%; /* Full width for consistency */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 480px) {
-    #profile-modal .modal-content {
-        padding: 1.5rem;
-        max-width: 100%;
-    }
-
-    .profile-details {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-    }
-
-    .profile-pic img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .account-info p {
-        font-size: 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .account-info p span {
-        width: 100%; /* Full width on small screens */
-    }
-
-    .account-info p span[contenteditable="true"] {
-        width: 100%;
-        text-align: left;
-        padding: 0.75rem;
-    }
-
-    .stats {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .promo-section {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .promo-section input {
-        min-width: 100%; /* Full width on small screens */
-    }
-
-    .promo-section .action-btn {
-        padding: 1rem;
-    }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 480px) {
-    #profile-modal .modal-content {
-        padding: 1.5rem;
-        max-width: 100%;
-    }
-
-    .profile-details {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-    }
-
-    .profile-pic img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .account-info p {
-        font-size: 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
-
-    .account-info p span[contenteditable="true"] {
-        width: 100%;
-        text-align: left;
-    }
-
-    .stats {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .promo-section {
-        flex-direction: column;
-    }
+    width: 100%;
 }
 
 /* Responsive Design */
@@ -1426,5 +1186,51 @@ body.dark .ride-history li {
 
     .driver-map {
         height: 250px;
+    }
+
+    #profile-modal .modal-content {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .profile-details {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .profile-pic img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .account-info p {
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .account-info p span[contenteditable="true"] {
+        width: 100%;
+        text-align: left;
+    }
+
+    .stats {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .promo-section {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .promo-section input {
+        min-width: 100%;
+    }
+
+    .promo-section .action-btn {
+        padding: 1rem;
     }
 }
